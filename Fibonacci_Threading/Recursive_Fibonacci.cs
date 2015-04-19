@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fibonacci_Threading
 {
-    class Recursive_Fibonacci
+    public class Recursive_Fibonacci
     {        /// <summary>
         /// The Nth Fibonacci number to calculate
         /// </summary>

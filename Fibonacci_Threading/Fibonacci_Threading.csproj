@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Fibonacci_Thread_Class.cs" />
     <Compile Include="Recursive_Fibonacci.cs" />
+    <Compile Include="Threading_Fibonacci.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
