@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Fibonacci_Threading
 {
+    /// <summary>
+    /// Fibonacci Recursive Calculation worker class.  Objects are created of this class to perform the Fibonacci calculations.
+    /// This is done for threading purposes.
+    /// </summary>
     public class Fibonacci_Thread_Class
     {
-        #region Static Stuff
         /// <summary>
         /// Member that keeps track of the maximum number of threads that can be spawned.
         /// MUST BE A NUMBER SUCH THAT: 2^n = max_thread_count
@@ -38,7 +41,7 @@ namespace Fibonacci_Threading
             // The Fibonacci number to calculate does not go longo enough depth to start threading
             else
             {
-                Fibonacci_Thread_Class fib = new Fibonacci_Thread_Class(n);
+                Recursive_Fibonacci fib = new Recursive_Fibonacci(n);
                 fib.Run();
                 return fib.Value;
             }
@@ -56,8 +59,8 @@ namespace Fibonacci_Threading
             if (Math.Pow(2, depth + 1) == max_thread_count)
             {
                 // Create Fibonacci calculation objects
-                Fibonacci_Thread_Class fib1 = new Fibonacci_Thread_Class(n - 1);
-                Fibonacci_Thread_Class fib2 = new Fibonacci_Thread_Class(n - 2);
+                Recursive_Fibonacci fib1 = new Recursive_Fibonacci(n - 1);
+                Recursive_Fibonacci fib2 = new Recursive_Fibonacci(n - 2);
 
                 // Threading starts
                 Thread fib_thread_1 = new Thread(new ThreadStart(fib1.Run));
@@ -80,69 +83,6 @@ namespace Fibonacci_Threading
                 return thread_fibonacci(n - 1, depth + 1) + thread_fibonacci(n - 2, depth + 1);
             }
         }
-        #endregion
-
-        #region Member Data
-        /// <summary>
-        /// The Nth Fibonacci number to calculate
-        /// </summary>
-        private long to_calc;
-        /// <summary>
-        /// The Fibonacci number we've calculated
-        /// </summary>
-        private long value;
-        /// <summary>
-        /// Property used to access the Fibonacci number calculated.
-        /// </summary>
-        public long Value
-        {
-            get
-            {
-                return value;
-            }
-        }
-
-        /// <summary>
-        /// Fibonacci number calculation class.  Performs the recursive calculation of the Fibonacci number
-        /// </summary>
-        /// <param name="n">The nth Fibonacci number to calculate</param>
-        public Fibonacci_Thread_Class(long n)
-        {
-            to_calc = n;
-            value = 0;
-        }
-
-        /// <summary>
-        /// Used to start calculating the nth Fibonacci number.
-        /// </summary>
-        public void Run()
-        {
-            recursive_fibonacci(to_calc);
-        }
-
-        /// <summary>
-        /// The recusive fibonacci function.  Recursively calculates the Fibonacci value from the value given to it.
-        /// Stores the number calculated in value
-        /// </summary>
-        /// <param name="n">The current value to calculate the Fibonacci value from.</param>
-        private void recursive_fibonacci(long n)
-        {
-            if (n == 0)
-            {
-                return;
-            }
-            else if (n == 1)
-            {
-                value += 1;
-                return;
-            }
-            else
-            {
-                recursive_fibonacci(n - 1);
-                recursive_fibonacci(n - 2);
-            }
-        }
-        #endregion
 
         /// <summary>
         /// Main driver method
@@ -153,7 +93,16 @@ namespace Fibonacci_Threading
             long numberToCalculate = 0;
 
             Console.WriteLine("What Fibonacci number do you wish to calculate?");
-            numberToCalculate = long.Parse(Console.ReadLine());
+            try
+            {
+                numberToCalculate = long.Parse(Console.ReadLine());
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+                Console.ReadKey();
+                return;
+            }
 
             returnedValue = fibonacci(numberToCalculate);
 
