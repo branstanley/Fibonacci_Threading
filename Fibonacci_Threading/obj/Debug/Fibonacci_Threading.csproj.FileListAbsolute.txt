@@ -1,1 +1,6 @@
 C:\Users\Outsider\Documents\GitHub\Fibonacci_Threading\Fibonacci_Threading\bin\Debug\Fibonacci_Threading.exe.config
+C:\Users\Outsider\Documents\GitHub\Fibonacci_Threading\Fibonacci_Threading\obj\Debug\Fibonacci_Threading.csprojResolveAssemblyReference.cache
+C:\Users\Outsider\Documents\GitHub\Fibonacci_Threading\Fibonacci_Threading\bin\Debug\Fibonacci_Threading.exe
+C:\Users\Outsider\Documents\GitHub\Fibonacci_Threading\Fibonacci_Threading\bin\Debug\Fibonacci_Threading.pdb
+C:\Users\Outsider\Documents\GitHub\Fibonacci_Threading\Fibonacci_Threading\obj\Debug\Fibonacci_Threading.exe
+C:\Users\Outsider\Documents\GitHub\Fibonacci_Threading\Fibonacci_Threading\obj\Debug\Fibonacci_Threading.pdb
